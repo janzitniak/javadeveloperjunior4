@@ -26,28 +26,23 @@ public class CiselnePriradenieTextovejZnamke {
         System.out.println("Prosím zadaj textovú známku (výborný, chválitebný, dobrý, dostatočný, nedostatočný): ");
         String vstupnaHodnota = sc.nextLine(); // Priamy pouzivatelsky vstup, vidiet v konzole. Na nacitanie String musime pouzit nextLine
 
-        String vstupnaTextovaZnamka = stripAccents(vstupnaHodnota).toLowerCase(); // Odstranenie diakritiky a konverzia textu na male pismena
+        String vstupnaTextovaZnamka = stripAccents(vstupnaHodnota).toLowerCase().trim(); // Odstranenie diakritiky a konverzia textu na male pismena a zaroven odstranenie medzier na zaciatku a konci
+
         //System.out.println(vstupnaTextovaZnamka);
 
         switch (vstupnaTextovaZnamka) {
-            case ("vyborny"):
+            case ("vyborny") -> {
                 System.out.println(1);
-                break;
-            case ("chvalitebny"):
+                System.out.println("Si najlepší");
+            }
+
+            case ("chvalitebny") ->
                 //System.out.println(2);
-                System.out.println(2);
-                break;
-            case("dobry"):
-                System.out.println(3);
-                break;
-            case("dostatocny"):
-                System.out.println(4);
-                break;
-            case("nedostatocny"):
-                System.out.println(5);
-                break;
-            default:
-                System.out.println("Neznámy vstup!");
+                    System.out.println(2);
+            case ("dobry") -> System.out.println(3);
+            case ("dostatocny") -> System.out.println(4);
+            case ("nedostatocny") -> System.out.println(5);
+            default -> System.out.println("Neznámy vstup!");
         }
 
 
