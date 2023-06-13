@@ -33,7 +33,7 @@ public class PrikladNaPracuSPremennymi {
         System.out.println("V Bratislave dňa " + formatDatumu.format(datum));
 
 
-        LocalDate localDate = LocalDate.of( 2014 , Month.FEBRUARY , 11 ); // Naplnime premennu localDate konkretnym datumom
+        LocalDate localDate = LocalDate.of(2014, Month.FEBRUARY, 11); // Naplnime premennu localDate konkretnym datumom
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
         System.out.println("Vypisujem localDate: " + localDate.format(formatter));
 

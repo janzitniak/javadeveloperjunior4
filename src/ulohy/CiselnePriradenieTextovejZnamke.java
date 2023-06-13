@@ -30,6 +30,10 @@ public class CiselnePriradenieTextovejZnamke {
 
         //System.out.println(vstupnaTextovaZnamka);
 
+        if (!vstupnaTextovaZnamka.equals("vyborny")) // Ukazka negacie equals, vykricnik je na zaciatku premennej
+            System.out.println("Nezadal si známku výborný");
+
+
         switch (vstupnaTextovaZnamka) {
             case ("vyborny") -> {
                 System.out.println(1);
