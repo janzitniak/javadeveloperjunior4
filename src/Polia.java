@@ -1,4 +1,11 @@
+import java.util.Arrays;
+
 public class Polia {
+
+    public static void zoradPole(double [] cisla) {
+        Arrays.sort(cisla);
+    }
+
     public static void main(String[] args) {
         String[] bicycles; // Prazdne pole
         String [] cars  = {"Volvo", "BMW", "Ford", "Mazda", "Škoda"};
@@ -21,6 +28,21 @@ public class Polia {
         }
 
         // Doplnit "staticke" pole nie je jednoznacna cesta
+
+        double [] cisla = {100, 2.5, 4, 8.5, 10}; // Vytvorili sme pole s desatinnymi cislami
+        double [] cislaKopia = cisla.clone(); // Vytvorili sme nezavislu kopiu pola cisel
+
+        //Arrays.sort(cisla); // Cisla usporiadane od najmensieho po najvacsie
+        zoradPole(cisla);
+        System.out.println("\nVypisujem čísla po zoradení: ");
+        for (double cislo:cisla) {
+            System.out.println(cislo);
+        }
+
+        System.out.println("\nVypisujem čísla kópie poľa čisla");
+        for (double cisloKopia:cislaKopia) {
+            System.out.println(cisloKopia);
+        }
 
     }
 }
