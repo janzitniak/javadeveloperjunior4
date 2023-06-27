@@ -1,6 +1,11 @@
 package ulohy;
 
+//import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 Úloha na základné Excel funkcie.
@@ -63,4 +68,11 @@ public class ZakladneExcelFunkcie {
         System.out.println("Výsledok maxima (MAX): " + max(cisla));
         System.out.println("Výsledok minima (MIN): " + min(cisla));
     }
+
+    @Test
+    private void test() {
+        double [] cisla = {100, 2.5, 4, 8.5, 10};
+        assertEquals(20, sucet(cisla));
+    }
+
 }
