@@ -34,8 +34,10 @@ public class PriradenieZnamky {
                 pocet++; // Obsah premennej pocet zvysime o 1
             }
             // &&   pouzijeme pri podmienkach, ktore musia platit zaroven (AND)
-            // ||   pouzijeme pri podmienkach, pri ktorych staci, ked plati jedna z nich (OR). Pipe vo Windows-e vlozime kombinaciou AltGr + W
-            if (percenta > 90)
+            // ||   pouzijeme pri podmienkach, pri ktorych staci, ked plati jedna z nich (OR). Pipe vo Windows-e vlozime kombinaciou AltGr + W// TODO Vytvorit metodu s nazvom 'hodnot', ktora vrati zodpovedajucu znamku na zaklade vstupnej hodnoty
+            // TODO Otestovat metodu 'hodnot' prostrednictvom jUnit testov, pripravit testovacie scenare
+            // TODO Zhodnotenie o 20.50
+            if (percenta >= 90)
                 System.out.println("A");
             else if (percenta >= 75 && percenta < 90)
                 System.out.println("B");
