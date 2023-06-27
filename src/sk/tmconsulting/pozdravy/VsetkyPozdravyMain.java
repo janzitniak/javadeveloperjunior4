@@ -7,7 +7,7 @@ import sk.tmconsulting.pozdravy.slovensky.Ahoj;
 
 import java.util.Scanner;
 
-public class VsetkyPozdravy {
+public class VsetkyPozdravyMain {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
