@@ -4,6 +4,7 @@ public class Vydavok {
     private String nazov;
     private String kategoria;
     private double cena;
+    public final double DPH = 0.20;
 
     public String getNazov() {
         // Mozeme pridat jednoduchu aplikacnu logiku, ktora bude s premennou nazov nieco robit

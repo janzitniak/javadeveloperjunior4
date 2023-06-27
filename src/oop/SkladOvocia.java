@@ -8,6 +8,7 @@ public class SkladOvocia {
         jablko.mnozstvoVitaminov = 90;
         jablko.odroda = "Red delicious";
         jablko.nazov = "Jablko";
+        // jablko.rocneObdobie = "zima"; // Vypise chybu, pretoze rocneObdobie je konstanta (cize pouzity modifikator final)
 
         Ovocie hruska = new Ovocie(); // Vytvorili sme objekt hruska
         hruska.farba = "zelená";
@@ -21,6 +22,7 @@ public class SkladOvocia {
         System.out.println("Je sladké: " + jablko.jeSladke);
         System.out.println("Množstvo vitamínov: " + jablko.mnozstvoVitaminov);
         System.out.println("Odroda: " + jablko.odroda);
+        System.out.println("Ročné obdobie zberu: " + jablko.rocneObdobie);
 
         System.out.println(); // Prázdny riadok
 
@@ -29,6 +31,7 @@ public class SkladOvocia {
         System.out.println("Je sladké: " + hruska.jeSladke);
         System.out.println("Množstvo vitamínov: " + hruska.mnozstvoVitaminov);
         System.out.println("Odroda: " + hruska.odroda);
+        System.out.println("Ročné obdobie zberu: " + jablko.rocneObdobie);
 
     }
 }

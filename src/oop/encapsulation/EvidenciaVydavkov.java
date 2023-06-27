@@ -11,5 +11,7 @@ public class EvidenciaVydavkov {
         System.out.println("Názov výdavku: " + chlieb.getNazov());
         System.out.println("Cena: " + chlieb.getCena());
         System.out.println("Kategória: " + chlieb.getKategoria());
+        //System.out.println("DPH na chlieb je:  " + chlieb.DPH * 100 + "%");
+        //System.out.println("DPH na chlieb je: " + Vydavok.DPH);
     }
 }
