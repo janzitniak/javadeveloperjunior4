@@ -1,5 +1,6 @@
 package oop.kniznica;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,12 +9,13 @@ public class KnihaService {
 
     // Bezparametricky konstruktor
     public KnihaService() {
-        zoznamKnih = naplnKniznicuKnihami();
+        //zoznamKnih = naplnKniznicuKnihami();
+        zoznamKnih = new ArrayList<>(); // Vytvorenie prazdneho zoznamu knih
     }
 
     public void zobrazMenu() {
         System.out.println("""
-                
+                                
                 Vyber prosím jednu z možností:
                 -----------------------------
                 (1) Zadaj novú knihu
@@ -21,9 +23,52 @@ public class KnihaService {
                 (3) Zobraz konkrétnu knihu (podľa indexu)
                 (4) Vymaž konkrétnu knihu (podľa indexu)
                 (5) Zobraz počet všetkých kníh
+                (6) Vyhľadaj knihu podľa názvu
+                (7) Načítaj zoznam kníh zo súboru (zadaj názov súboru)
+                (8) Ulož zoznam kníh do súboru (zadaj názov súboru)
                 (9) Vymaž všetky knihy
                 Koniec = skončí zadávanie novej knihy         
                 """);
+    }
+
+    // Metoda ulozDoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho ulozi
+    public void ulozDoSuboru() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov súboru:");
+        String nazovSuboru = scn.nextLine();
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(nazovSuboru); // vytvorime subor s nazvom kniha.ser
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream); // vytvorime Object stream pre ukladanie objektov
+            objectOutputStream.writeObject(zoznamKnih); // zapiseme objekt
+            objectOutputStream.flush(); // realne uskutocnime operaciu zapisu
+            objectOutputStream.close(); // zatvorime object output stream
+            fileOutputStream.close(); // zatvorime file output stream, cize subor*/
+            System.out.println("Súbor je uložený!");
+        } catch (IOException e) {
+            System.out.println("Nepodaril sa vytvoriť súbor, resp. ho uložiť!");
+            e.printStackTrace();
+        }
+    }
+
+    // Metoda nacitajZoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho otvori
+    public void nacitajZoSuboru() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov súboru:");
+        String nazovSuboru = scn.nextLine();
+        try {
+            FileInputStream fileInputStream = new FileInputStream(nazovSuboru);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            zoznamKnih = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+            System.out.println("Súbor je načítaný!");
+        } catch (IOException e) {
+            System.out.println("Nepodaril sa otvoriť súbor!");
+            //e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Súbor sa podaril načítať, ale nie je kompatibilný z ArrayList!");
+            //e.printStackTrace();
+        }
     }
 
     public void pridajKnihu() {
@@ -120,6 +165,12 @@ public class KnihaService {
                 case "5" -> {
                     System.out.println("Vybral si číslo 5");
                     System.out.println("Počet všetkých kníh v zozname: " + pocetKnih());
+                }
+                case "7" -> {
+                    nacitajZoSuboru();
+                }
+                case "8" -> {
+                    ulozDoSuboru();
                 }
                 case "koniec" -> {
                     System.out.println("Vybral si koniec");
