@@ -2,6 +2,7 @@ package oop.kniznica;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class KnihaService {
@@ -23,12 +24,31 @@ public class KnihaService {
                 (3) Zobraz konkrétnu knihu (podľa indexu)
                 (4) Vymaž konkrétnu knihu (podľa indexu)
                 (5) Zobraz počet všetkých kníh
-                (6) Vyhľadaj knihu podľa názvu
+                (6) Vyhľadaj knihu/knihy podľa názvu (fulltext hľadanie)
                 (7) Načítaj zoznam kníh zo súboru (zadaj názov súboru)
                 (8) Ulož zoznam kníh do súboru (zadaj názov súboru)
                 (9) Vymaž všetky knihy
                 Koniec = skončí zadávanie novej knihy         
                 """);
+    }
+
+    public void hladajKnihyPodlaNazvu() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov knihy:");
+        String hladanyNazov = scn.nextLine();
+
+        ArrayList<Kniha> najdeneKnihy = new ArrayList<>(); // Prazdny zoznam najdenych knih
+        for(Kniha konkretnaKniha: zoznamKnih) { // foreach pre prechadzanie kazdej knihy v nasom zozname knih
+            // Obsahuje nazov konkretnej knihy aspon cast nazvu knihy, ktory hladame?
+            if (konkretnaKniha.getNazov().contains(hladanyNazov)) {
+                najdeneKnihy.add(konkretnaKniha); // Ak taku knihu najde, tak ju ulozi do zoznamu najdeneKnihy
+            }
+        }
+        // Vypiseme najdene knihy
+        System.out.println("\nNájdené knihy sú tieto:");
+        for(Kniha najdenaKniha:najdeneKnihy) {
+            System.out.println(najdenaKniha);
+        }
     }
 
     // Metoda ulozDoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho ulozi
@@ -94,10 +114,15 @@ public class KnihaService {
 /*        for(Kniha konkretnaKniha:zoznamKnihBlaBla) {
             System.out.println(konkretnaKniha);
         }*/
-        for (int i = 0; i < zoznamKnih.size(); i++) {
-            System.out.print("Index knihy: " + i); // Index knihy
-            System.out.print("\t"); // Pouzijem este tabulator
-            System.out.println(zoznamKnih.get(i)); // Detail knihy, ktory riesi metoda toString v Kniha.java
+        if (!zoznamKnih.isEmpty()) {
+            for (int i = 0; i < zoznamKnih.size(); i++) {
+                System.out.print("Index knihy: " + i); // Index knihy
+                System.out.print("\t"); // Pouzijem este tabulator
+                System.out.println(zoznamKnih.get(i)); // Detail knihy, ktory riesi metoda toString v Kniha.java
+            }
+        }
+        else {
+            System.out.println("Zoznam kníh je prázdny!");
         }
     }
 
@@ -165,6 +190,9 @@ public class KnihaService {
                 case "5" -> {
                     System.out.println("Vybral si číslo 5");
                     System.out.println("Počet všetkých kníh v zozname: " + pocetKnih());
+                }
+                case "6" -> {
+                    hladajKnihyPodlaNazvu();
                 }
                 case "7" -> {
                     nacitajZoSuboru();
