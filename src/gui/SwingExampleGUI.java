@@ -51,8 +51,9 @@ public class SwingExampleGUI {
 
         btnOk.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(textField.getText());
-                labelText.setText( textField.getText() );
+                String zadanyText = textField.getText(); // Vlozili sme text z texfield-u do premennej typu String
+                System.out.println(zadanyText);
+                labelText.setText(zadanyText);
             }
         });
 
