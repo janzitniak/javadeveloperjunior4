@@ -9,14 +9,8 @@ public class Hracka {
     private String vekoveUrcenie;
     private String nazov;
 
-    // Vytvorili sme konstruktor bez parametrov
     public Hracka() {
-/*        nazov = "Žiadny";
-        farba = "-";
-        material = "Výrobca neuvádza"; // V pripade ziadneho zobrazenia textu sa pouzivaju dve uvodzovky ""
-        // material = ""; // Zobrazi sa "prazdny" text
-        vekoveUrcenie = "Výrobca neuvádza";
-        cena = 10.00;*/
+        vekoveUrcenie = "Výrobca neuvádza!";
     }
 
     // Konstruktor s parametrami
